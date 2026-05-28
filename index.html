@@ -5,71 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Web Ergonomics - Rhonda Coding Academy</title>
-    <meta name="description" content="Web ergonomics principles applied to the Rhonda Coding Academy LCMS.">
+    <title>Web Ergonomics | Rhonda Coding Academy LCMS</title>
+    <meta name="description" content="Responsive LCMS layout explaining Web Ergonomics principles.">
     
     <!-- Bootstrap 5 CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
-        body {
+        /* Minimal styling to define layout areas */
+        .sidebar {
             background-color: #f8f9fa;
-            padding: 50px 0;
+            border-right: 1px solid #dee2e6;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .ergonomics-container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .main-content {
+            padding: 30px;
         }
-        h1 {
-            color: #0d6efd;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .principle-title {
-            font-weight: bold;
-            color: #333;
-            margin-top: 20px;
+        @media (max-width: 991.98px) {
+            .sidebar {
+                min-height: auto;
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="ergonomics-container shadow">
-            <h1>Web Ergonomics Principles</h1>
-            <p class="lead text-center mb-5">Specific ergonomics principles applied to the Learning Content Management System (LCMS) to ensure usability and accessibility.</p>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar: 3 columns on LG, stacks (12 cols) on XS -->
+            <aside class="col-lg-3 col-12 sidebar">
+                <h4 class="mb-4">LCMS Menu</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-primary" href="#">Home</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-dark" href="#">Courses</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-dark" href="#">Ergonomics</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 text-dark" href="#">Settings</a></li>
+                </ul>
+            </aside>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="mb-4">
-                        <h4 class="principle-title">1. Readability & Contrast</h4>
-                        <p>We apply high contrast ratios between text and background colors (e.g., dark text on light backgrounds) to ensure that all students, including those with visual impairments, can read the learning content without eye strain.</p>
+            <!-- Main Content: 9 columns on LG, stacks (12 cols) on XS -->
+            <main class="col-lg-9 col-12 main-content">
+                <header class="mb-5">
+                    <h1>Web Ergonomics Principles</h1>
+                    <p class="text-muted">Applied to the Learning Content Management System</p>
+                </header>
+
+                <section>
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="card p-3 shadow-sm border-light">
+                                <h5>1. Readability & Contrast</h5>
+                                <p>Using high contrast ratios between text and background ensures content is legible for all students, including those with visual impairments.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card p-3 shadow-sm border-light">
+                                <h5>2. Consistency & Familiarity</h5>
+                                <p>Standard navigation patterns and layout consistency reduce cognitive load, helping students focus on the learning material.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card p-3 shadow-sm border-light">
+                                <h5>3. Accessibility (Perceivability)</h5>
+                                <p>Using semantic HTML5 elements ensures that screen readers and other assistive technologies can correctly parse the system's structure.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card p-3 shadow-sm border-light">
+                                <h5>4. Responsiveness (Flexibility)</h5>
+                                <p>The fluid 3:9 grid system ensures the LCMS is usable on desktops, tablets, and smartphones without loss of information.</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="mb-4">
-                        <h4 class="principle-title">2. Consistency & Familiarity</h4>
-                        <p>By using a consistent layout and standard navigation patterns, we reduce the cognitive load on students. This allows them to focus on learning the content rather than learning how to use the interface.</p>
+                </section>
+                <section class="mt-5 pt-4 border-top">
+                    <h2 class="mb-4">Deployment to Apache</h2>
+                    <p>To move the completed LCMS website from your home directory to the Apache document root, execute the following commands in your terminal:</p>
+                    
+                    <div class="bg-light p-3 rounded border">
+                        <p class="mb-1 text-muted small"># 1. Copy files to Apache document root</p>
+                        <code class="d-block mb-3 text-primary">sudo cp -r ~/web-ui-exam/* /var/www/html/</code>
+                        
+                        <p class="mb-1 text-muted small"># 2. Adjust ownership to the Apache user (www-data)</p>
+                        <code class="d-block mb-3 text-primary">sudo chown -R www-data:www-data /var/www/html/</code>
+                        
+                        <p class="mb-1 text-muted small"># 3. Set directory permissions (755)</p>
+                        <code class="d-block mb-3 text-primary">sudo find /var/www/html/ -type d -exec chmod 755 {} \;</code>
+                        
+                        <p class="mb-1 text-muted small"># 4. Set file permissions (644)</p>
+                        <code class="d-block mb-3 text-primary">sudo find /var/www/html/ -type f -exec chmod 644 {} \;</code>
                     </div>
-
-                    <div class="mb-4">
-                        <h4 class="principle-title">3. Accessibility (Perceivability)</h4>
-                        <p>The system uses semantic HTML5 elements and ARIA labels, making the content perceivable by assistive technologies like screen readers, ensuring inclusivity for students with disabilities.</p>
-                    </div>
-
-                    <div class="mb-4">
-                        <h4 class="principle-title">4. Responsiveness (Flexibility)</h4>
-                        <p>The layout is designed to be fully fluid. Whether a student is using a desktop, tablet, or smartphone, the interface adapts to provide an optimal viewing experience without loss of information or functionality.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-5">
-                <a href="finish.html" class="btn btn-outline-primary">Return to Completion Page</a>
-            </div>
+                </section>
+            </main>
         </div>
     </div>
 
